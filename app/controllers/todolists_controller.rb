@@ -4,6 +4,7 @@ class TodolistsController < ApplicationController
     # Viewへ渡すためのインスタンス変数に空のモデルオブジェクトを生成する。
    @list = List.new
   end
+  
   def create
     # １. データを新規登録するためのインスタンス作成　# listDBから取ってきた新規の情報をlistに代入
     list = List.new(list_params)
@@ -37,11 +38,19 @@ class TodolistsController < ApplicationController
     redirect_to todolist_path(list.id)
   end
   
+  def destroy
+    list = List.find(params[:id])  # データ（レコード）を1件取得
+    list.destroy  # データ（レコード）を削除
+    redirect_to todolists_path  # 投稿一覧画面へリダイレクト
+    # 投稿一覧index(todolists_path:getの場合なので)
+  end
+  
   # privateより後に定義されたメソッドは、アクションとして認識されなくなる
   # privateメソッドの名前は、「モデル名_params」とすることが多い
   private
   def list_params
-    params.require(:list).permit(:title,:body)
+    params.require(:list).permit(:title,:body,:image)
+    # 公式で確認
     # list（キー）モデルに対して、title,body,imageコラムを抽出したい
     # permitメソッドを使用する事で、許可された値のみを取得することができる
   end

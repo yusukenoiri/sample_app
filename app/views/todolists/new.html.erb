@@ -2,10 +2,14 @@
 <!-- form_with部分 -->
 <%= form_with model: @list, url:'/todolists', local:true do |f| %>
 <!--formタグでフォームをデータ送信　＠モデル名, 送るurl:, local:true do |変数を入れる？？|-->
+<!--@listに入れた空データをfに入れている、任意の値-->
   <h4>タイトル</h4>
   <%= f.text_field :title %>
   <h4>本文</h4>
   <%= f.text_area :body %>
+  <h4>画像</h4>
+  <%= f.attachment_field :image %>
+  <!--image_idカラムの_idを抜いたもの-->
   <%= f.submit '投稿' %>
   <!--「投稿する」ボタンを押すと、POSTメソッドの'/todolists'に送信-->
 <% end %>
