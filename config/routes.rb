@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # contorollerにフォームデータを送信するのでpost
  
   post 'todolists' => 'todolists#create'
+  # new画面で新規投稿された時にpostされこのcontorollerへ処理がつながる
   get 'todolists' => 'todolists#index'
   get 'todolists/:id' => 'todolists#show', as:'todolist'
   get 'todolists/:id/edit' => 'todolists#edit', as: 'edit_todolist'

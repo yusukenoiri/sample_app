@@ -4,7 +4,7 @@
 <h2>本文</h2>
 <p><%= @list.body %></p>
 <h2>画像</h2>
-<%= attachment_image_tag @list, :image, :fill, 300, 300, format: 'jpeg' %>
+<%= attachment_image_tag @list, :image, :fill, 100, 100, format: 'jpeg' %>
 <!--attachment_image_tag 表示する画像の入ったレコード, :画像のカラム名-->
 <!--image_idとつけたが、imageなのは何故か？？-->
 <%= link_to"編集",edit_todolist_path(@list.id) %>
